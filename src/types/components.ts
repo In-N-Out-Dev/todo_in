@@ -6,3 +6,9 @@ export type AuthFormProps = {
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
   formType: 'LOGIN' | 'SIGNUP';
 };
+
+export type TodoFormProps = {
+  titleInputRef: RefObject<HTMLInputElement>;
+  contentInputRef: RefObject<HTMLInputElement>;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+};

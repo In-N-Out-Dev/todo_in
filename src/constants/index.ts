@@ -18,3 +18,12 @@ export const QUERY_KEYS = {
   todos: 'TODOS',
   user: 'USER',
 };
+
+export const LOCALSTORAGE_KEY = {
+  todoDetail: 'todoDetail',
+};
+
+export const RECOIL_KEYS = {
+  todo: 'todoDetailState',
+  modal: 'modalState',
+};
