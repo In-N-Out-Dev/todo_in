@@ -1,10 +1,17 @@
-import {ReactNode} from 'react';
+import {ReactNode, useEffect} from 'react';
 import {Container, Modal, Navigation} from '@/components';
 import styled from '@emotion/styled';
 import {useModal} from '@/hooks';
+import {useRecoilState} from 'recoil';
+import {authState} from '@/atom';
+import {LOCALSTORAGE_KEY} from '@/constants';
 
 export const Layout = ({children}: {children: ReactNode}) => {
   const {isModalOpened} = useModal();
+  const [, setAuthState] = useRecoilState(authState);
+  useEffect(() => {
+    setAuthState({isLogined: !!window.localStorage.getItem(LOCALSTORAGE_KEY.token)});
+  }, [setAuthState]);
 
   return (
     <>
