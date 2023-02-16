@@ -10,7 +10,6 @@ export const API_ENDPOINTS = {
   todos: '/todos',
 };
 
-export const TOKEN = 'token';
 export const EMAIL = 'email';
 export const PASSWORD = 'password';
 
@@ -21,9 +20,11 @@ export const QUERY_KEYS = {
 
 export const LOCALSTORAGE_KEY = {
   todoDetail: 'todoDetail',
+  token: 'token',
 };
 
 export const RECOIL_KEYS = {
   todo: 'todoDetailState',
   modal: 'modalState',
+  auth: 'authState',
 };
