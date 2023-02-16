@@ -1,7 +1,9 @@
-import {EMAIL, PASSWORD} from '@/constants';
+/** @jsxImportSource @emotion/react */
+import {EMAIL, PASSWORD, ROUTES} from '@/constants';
 import {AuthFormProps} from '@/types';
 import styled from '@emotion/styled';
-import React from 'react';
+import Link from 'next/link';
+import {css} from '@emotion/react';
 
 export const AuthForm = ({emailInputRef, passwordInputRef, onSubmit, formType}: AuthFormProps) => {
   return (
@@ -16,6 +18,17 @@ export const AuthForm = ({emailInputRef, passwordInputRef, onSubmit, formType}: 
         <Input name={PASSWORD} id={PASSWORD} ref={passwordInputRef} type={PASSWORD} />
       </Label>
       <Button>{formType}</Button>
+      {formType === 'LOGIN' && (
+        <Link
+          href={ROUTES.signup}
+          css={css`
+            margin-top: 16px;
+            text-align: center;
+          `}
+        >
+          회원 가입
+        </Link>
+      )}
     </Form>
   );
 };

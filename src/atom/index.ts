@@ -1,5 +1,5 @@
 import {atom} from 'recoil';
-import {RECOIL_KEYS} from '../constants/index';
+import {RECOIL_KEYS} from '@/constants';
 import {TodoType} from '@/types';
 import {ReactNode} from 'react';
 
@@ -17,4 +17,9 @@ export const modalState = atom({
     modalComponent: <ReactNode | null>null,
     isModalOpened: false,
   },
+});
+
+export const authState = atom({
+  key: RECOIL_KEYS.auth,
+  default: {isLogined: false},
 });

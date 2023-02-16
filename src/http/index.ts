@@ -1,11 +1,11 @@
-import {API_ENDPOINTS, TOKEN} from '@/constants';
+import {API_ENDPOINTS, LOCALSTORAGE_KEY} from '@/constants';
 import {LoginFormType, TodoFormType, TodoType} from '@/types';
 
 const BASE_URL = process.env.NEXT_PUBLIC_HOST;
 
 const apiInstance = (url: string, option?: RequestInit) => fetch(BASE_URL + url, option);
 
-const getToken = () => localStorage.getItem(TOKEN);
+const getToken = () => localStorage.getItem(LOCALSTORAGE_KEY.token);
 
 const postLogin = (form: LoginFormType) =>
   apiInstance(API_ENDPOINTS.login, {
