@@ -1,17 +1,23 @@
-import React, {ReactNode} from 'react';
-import {Container, Navigation} from '@/components';
+import {ReactNode} from 'react';
+import {Container, Modal, Navigation} from '@/components';
 import styled from '@emotion/styled';
+import {useModal} from '@/hooks';
 
 export const Layout = ({children}: {children: ReactNode}) => {
+  const {isModalOpened} = useModal();
+
   return (
-    <Container>
-      <Wrapper>
-        <Block>
-          <Navigation />
-          {children}
-        </Block>
-      </Wrapper>
-    </Container>
+    <>
+      <Container>
+        <Wrapper>
+          <Block>
+            <Navigation />
+            {children}
+          </Block>
+        </Wrapper>
+      </Container>
+      {isModalOpened && <Modal />}
+    </>
   );
 };
 
