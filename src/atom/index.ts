@@ -5,10 +5,7 @@ import {ReactNode} from 'react';
 
 export const todoDetailState = atom({
   key: RECOIL_KEYS.todo,
-  default: {
-    isOpened: false,
-    todo: <TodoType>{},
-  },
+  default: <TodoType | null>null,
 });
 
 export const modalState = atom({
