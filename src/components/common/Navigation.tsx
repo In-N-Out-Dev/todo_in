@@ -1,8 +1,23 @@
 import styled from '@emotion/styled';
 import Link from 'next/link';
-import {ROUTES} from '@/constants';
+import {LOCALSTORAGE_KEY, ROUTES, QUERY_KEYS} from '@/constants';
+import {useRecoilState} from 'recoil';
+import {todoDetailState, authState} from '@/atom';
+import {useQueryClient} from '@tanstack/react-query';
 
 export const Navigation = () => {
+  const client = useQueryClient();
+  const [{isLogined}, setAuthState] = useRecoilState(authState);
+  const [, setTodoDetail] = useRecoilState(todoDetailState);
+
+  const onClickLogout = () => {
+    window.localStorage.removeItem(LOCALSTORAGE_KEY.token);
+    window.localStorage.removeItem(LOCALSTORAGE_KEY.todoDetail);
+    client.removeQueries([QUERY_KEYS.todos]);
+    setTodoDetail(null);
+    setAuthState({isLogined: false});
+  };
+
   return (
     <Header>
       <Link href={ROUTES.home}>
@@ -10,7 +25,13 @@ export const Navigation = () => {
       </Link>
       <NavBar>
         <Button href={ROUTES.home}>홈</Button>
-        <Button href={ROUTES.login}>로그인</Button>
+        {isLogined ? (
+          <Button href={ROUTES.login} onClick={onClickLogout}>
+            로그아웃
+          </Button>
+        ) : (
+          <Button href={ROUTES.login}>로그인</Button>
+        )}
       </NavBar>
     </Header>
   );
