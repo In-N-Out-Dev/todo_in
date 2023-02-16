@@ -51,7 +51,6 @@ const getTodoById = (id: string) => {
 
 const createTodo = (form: TodoFormType) => {
   const token = getToken();
-  console.log(form, token);
 
   return apiInstance(API_ENDPOINTS.todos, {
     method: 'POST',
@@ -65,13 +64,14 @@ const createTodo = (form: TodoFormType) => {
     .then<TodoType>(({data}) => data);
 };
 
-const updateTodo = (form: TodoFormType) => {
+const updateTodo = (id: string) => (form: TodoFormType) => {
   const token = getToken();
 
-  return apiInstance(API_ENDPOINTS.todos, {
+  return apiInstance(API_ENDPOINTS.todos + `/${id}`, {
     method: 'PUT',
     headers: {
       Authorization: token ?? '',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(form),
   })
