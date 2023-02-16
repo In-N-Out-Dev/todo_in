@@ -22,6 +22,7 @@ const Form = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 16px;
 `;
 
 const Label = styled.label`

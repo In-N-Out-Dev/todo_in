@@ -41,6 +41,6 @@ const ModalWindow = styled.div`
 const ModalContent = styled.div`
   z-index: 9991;
   background-color: white;
-  width: 50vw;
-  padding: 16px;
+  border-radius: 4px;
+  width: 30vw;
 `;
