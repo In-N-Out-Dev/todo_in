@@ -7,19 +7,19 @@ import {useEffect} from 'react';
 import {useRecoilState} from 'recoil';
 
 export default function Home() {
-  const [{isOpened, todo}, setTodoDetail] = useRecoilState(todoDetailState);
+  const [todo, setTodo] = useRecoilState(todoDetailState);
   const {openModal} = useModal();
 
   useEffect(() => {
     const todoDetail = window.localStorage.getItem(LOCALSTORAGE_KEY.todoDetail);
-    todoDetail && setTodoDetail({isOpened: !!todoDetail, todo: JSON.parse(todoDetail)});
-  }, [setTodoDetail]);
+    todoDetail && setTodo(JSON.parse(todoDetail));
+  }, [setTodo]);
 
   return (
     <>
       <Button onClick={openModal(<TodoCreateForm />)}>할 일 추가</Button>
       <TodoList />
-      {isOpened && <TodoDetail {...todo} />}
+      {!!todo && <TodoDetail {...todo} />}
     </>
   );
 }
